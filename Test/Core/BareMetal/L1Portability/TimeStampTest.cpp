@@ -192,7 +192,7 @@ bool TimeStampTest::TestConvertFromEpoch(){
         return false;
     }
 
-    if (ts.GetHour() != 1) {
+    if (ts.GetHour() != 0) {
         return false;
     }
 
