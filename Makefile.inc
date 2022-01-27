@@ -52,6 +52,25 @@ else ifeq ($(TARGET), cov)
 	make -C Lib/gtest-1.7.0 -f Makefile.$(TARGET)
 endif
 
+install:
+	install -d $(DESTDIR)$(PREFIX)/MARTe2
+	install -d $(DESTDIR)$(PREFIX)/MARTe2/App
+	install -d $(DESTDIR)$(PREFIX)/MARTe2/lib
+	install -d $(DESTDIR)$(PREFIX)/MARTe2/Examples
+	install -d $(DESTDIR)$(PREFIX)/MARTe2/Source
+	install -d $(DESTDIR)$(PREFIX)/MARTe2/MakeDefaults
+	install -d $(DESTDIR)$(PREFIX)/MARTe2/Test
+	install -d $(DESTDIR)$(PREFIX)/MARTe2/GTest_Sources
+	install -d $(DESTDIR)$(PREFIX)/MARTe2/Lib
+	cp -r $(ROOT_DIR)/Build/$(TARGET)/GTest/* $(DESTDIR)$(PREFIX)/MARTe2/Test/
+	cp -r $(ROOT_DIR)/Source/* $(DESTDIR)$(PREFIX)/MARTe2/Source/
+	cp -r $(ROOT_DIR)/Build/$(TARGET)/Examples/* $(DESTDIR)$(PREFIX)/MARTe2/Examples/
+	cp -r $(ROOT_DIR)/MakeDefaults/* $(DESTDIR)$(PREFIX)/MARTe2/MakeDefaults/
+	cp -r $(ROOT_DIR)/Build/$(TARGET)/App/* $(DESTDIR)$(PREFIX)/MARTe2/App
+	cp -r $(ROOT_DIR)/Build/$(TARGET)/Core/ $(DESTDIR)$(PREFIX)/MARTe2/Core
+	cp -r $(ROOT_DIR)/Test/ $(DESTDIR)$(PREFIX)/MARTe2/GTest_Sources
+	cp -r $(ROOT_DIR)/Lib/* $(DESTDIR)$(PREFIX)/MARTe2/Lib/
+
 test: $(SUBPROJMAINTEST)
 	echo  $(SUBPROJMAINTEST)
 
